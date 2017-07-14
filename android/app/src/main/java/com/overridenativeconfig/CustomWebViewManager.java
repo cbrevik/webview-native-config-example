@@ -21,15 +21,15 @@ public class CustomWebViewManager extends ReactWebViewManager {
     protected static class CustomWebViewClient extends ReactWebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            boolean allowed = super.shouldOverrideUrlLoading(view, url);
+            boolean shouldOverride = super.shouldOverrideUrlLoading(view, url);
             String finalUrl = ((CustomWebView) view).getFinalUrl();
 
-            if (allowed && url != null && finalUrl != null && new String(url).equals(finalUrl)) {
+            if (!shouldOverride && url != null && finalUrl != null && new String(url).equals(finalUrl)) {
                 final WritableMap params = Arguments.createMap();
                 dispatchEvent(view, new NavigationCompletedEvent(view.getId(), params));
             }
 
-            return allowed;
+            return shouldOverride;
         }
     }
 
