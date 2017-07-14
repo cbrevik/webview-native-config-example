@@ -14,7 +14,7 @@ export default class MyApp extends Component {
         style={styles.container} 
         source={{ uri: 'https://github.com/facebook/react-native' }}
         finalUrl="https://github.com/facebook/react-native/issues"
-        onNavigationCompleted={(event) => console.log('Navigation completed')}
+        onNavigationCompleted={(event) => console.log('Navigation to issues completed')}
         />
     );
   }
